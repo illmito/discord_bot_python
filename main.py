@@ -1,5 +1,5 @@
 import discord
-from discord.ext import commands
+from discord.ext import commands, tasks
 import random
 
 TOKEN = "MTA5MDA1NTEzNTU4MzAzMTQ1OA.GYW3p9.PZb90oA0StxRw3gCCm4Ne3I4ykkj_EJ8T_dWUs"
@@ -16,19 +16,18 @@ async def on_ready():
 async def ping(ctx):
     bot_latency = round(client.latency * 1000)
 
-    await ctx.send(f"Pong, {bot_latency} ms")
+    await ctx.send(f"{bot_latency} ms")
 
 
-@client.command()
-async def mosh(ctx):
-    await ctx.send("pit")
+# random 5 name generator for a match in csgo
+@client.command(aliases=["csgo", "teamroll"])
+async def team_Select(ctx, *args):
+    players = args
+    chosen_players = random.sample(players, 5)
+    await ctx.send(f"**The players are...**  \n> `{', '.join(chosen_players)}`")
 
 
-@client.command()
-async def add(ctx, a: int, b: int):
-    await ctx.send(a + b)
-
-
+# 8ball magic for some fun
 @client.command(aliases=["8ball", "eightball"])
 async def magic_eightball(ctx, *, question):
     with open("responses.txt", "r") as f:
@@ -36,5 +35,15 @@ async def magic_eightball(ctx, *, question):
         response = random.choice(random_responses)
 
     await ctx.send(response)
+
+
+@client.command(aliases=["bdnquote", "nickrecord", "nick_quote"])
+async def nick_quote(ctx, *, args):
+    with open("quotes.txt", "a") as n:
+        quotes = str(args)
+        n.write(f"\n{quotes}")
+        n.close()
+    await ctx.send(f"`{quotes}`, has been added to the quotes.")
+
 
 client.run(TOKEN)
