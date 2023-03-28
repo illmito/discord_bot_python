@@ -37,6 +37,7 @@ async def magic_eightball(ctx, *, question):
     await ctx.send(response)
 
 
+# quote recording
 @client.command(aliases=["bdnquote", "nickrecord", "nick_quote"])
 async def nick_quote(ctx, *, args):
     with open("quotes.txt", "a") as n:
