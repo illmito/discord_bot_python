@@ -20,7 +20,7 @@ async def ping(ctx):
 
 
 # random 5 name generator for a match in csgo
-@client.command(aliases=["csgo", "teamroll"])
+@client.command(aliases=["csgo", "teamroll", "wheelofnames"])
 async def team_Select(ctx, *args):
     players = args
     chosen_players = random.sample(players, 5)
