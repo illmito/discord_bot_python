@@ -42,12 +42,6 @@ class GeneralCommands(commands.Cog):
             random_quotes = f.readlines()
             quotes = random.choice(random_quotes)
         await ctx.send(quotes)
-    #
-    #
-    # # async def load():
-    # #     for filename in os.listdir("./cogs"):
-    #
-    # client.run(TOKEN)
 
 
 async def setup(client):
