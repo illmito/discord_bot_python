@@ -4,12 +4,6 @@ import random
 import time
 
 
-def delayed_print(chosen_players):
-    for names in chosen_players:
-        print(names)
-        time.sleep(1)
-
-
 class GeneralCommands(commands.Cog):
     def __init__(self, client):
         self.client = client
@@ -23,7 +17,23 @@ class GeneralCommands(commands.Cog):
     async def wheel_of_names(self, ctx, *args):
         players = args
         chosen_players = random.sample(players, 5)
-        await ctx.send(f"**The players are...**  \n> `{', '.join(chosen_players)}`")
+        player1 = chosen_players[0]
+        player2 = chosen_players[1]
+        player3 = chosen_players[2]
+        player4 = chosen_players[3]
+        player5 = chosen_players[4]
+        await ctx.send("**THE PLAYERS ARE...**  ")
+        time.sleep(1)
+        await ctx.send(f'\n**`{player1.upper()}`**')
+        time.sleep(0.5)
+        await ctx.send(f'\n**`{player2.upper()}`**')
+        time.sleep(0.5)
+        await ctx.send(f'\n**`{player3.upper()}`**')
+        time.sleep(0.5)
+        await ctx.send(f'\n**`{player4.upper()}`** \nand... Lucky Last!')
+        time.sleep(1.5)
+        await ctx.send(f'\n**`{player5.upper()}`**')
+
 
     # 8ball magic for some fun
     @commands.command(aliases=["8ball", "eightball"])
@@ -50,30 +60,29 @@ class GeneralCommands(commands.Cog):
             quotes = random.choice(random_quotes)
         await ctx.send(quotes)
 
-    @commands.command(aliases=["test"])
-    async def tested(self, ctx, *args):
-        players = args
-        chosen_players = random.sample(players, 5)
-        player1 = chosen_players[0]
-        player2 = chosen_players[1]
-        player3 = chosen_players[2]
-        player4 = chosen_players[3]
-        player5 = chosen_players[4]
-        await ctx.send("**THE PLAYERS ARE...**  ")
-        time.sleep(1)
-        await ctx.send(f'\n**`{player1.upper()}`**')
-        time.sleep(0.5)
-        await ctx.send(f'\n**`{player2.upper()}`**')
-        time.sleep(0.5)
-        await ctx.send(f'\n**`{player3.upper()}`**')
-        time.sleep(0.5)
-        await ctx.send(f'\n**`{player4.upper()}`** \nand... Lucky Last!')
-        time.sleep(1.5)
-        await ctx.send(f'\n**`{player5.upper()}`**')
+    # @commands.command(aliases=["test"])
+    # async def tested(self, ctx, *args):
+    #     players = args
+    #     chosen_players = random.sample(players, 5)
+    #     player1 = chosen_players[0]
+    #     player2 = chosen_players[1]
+    #     player3 = chosen_players[2]
+    #     player4 = chosen_players[3]
+    #     player5 = chosen_players[4]
+    #     await ctx.send("**THE PLAYERS ARE...**  ")
+    #     time.sleep(1)
+    #     await ctx.send(f'\n**`{player1.upper()}`**')
+    #     time.sleep(0.5)
+    #     await ctx.send(f'\n**`{player2.upper()}`**')
+    #     time.sleep(0.5)
+    #     await ctx.send(f'\n**`{player3.upper()}`**')
+    #     time.sleep(0.5)
+    #     await ctx.send(f'\n**`{player4.upper()}`** \nand... Lucky Last!')
+    #     time.sleep(1.5)
+    #     await ctx.send(f'\n**`{player5.upper()}`**')
 
         # await ctx.send(f"**The players are...** "
         #                f"\n>>> {player5}\n{player1}\n{player2}\n{player3}\n{player4}")
-
 
 
 async def setup(client):
