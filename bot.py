@@ -35,3 +35,4 @@ asyncio.run(main())
 #     players = args
 #     chosen_players = random.sample(players, 5)
 #     await ctx.send(f"**The players are...**  \n> `{', '.join(chosen_players)}`")
+## test
