@@ -5,7 +5,7 @@ import asyncio
 import random
 
 
-TOKEN = "MTA5MDA1NTEzNTU4MzAzMTQ1OA.GYW3p9.PZb90oA0StxRw3gCCm4Ne3I4ykkj_EJ8T_dWUs"
+TOKEN = ""
 
 client = commands.Bot(command_prefix="//", intents=discord.Intents.all())
 
